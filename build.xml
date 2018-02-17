@@ -1,5 +1,5 @@
 <project name="robot" default="dist" basedir=".">
-    <property name="version" value="0.0.1"/>
+    <property name="version" value="0.0.2"/>
     <description>
         build file for robocode
     </description>
