@@ -37,10 +37,10 @@
             description="generate the distribution">
         <!-- Create the distribution directory -->
         <mkdir dir="${dist}"/>
-        <copy file="src/pl/sternik/kk/robocode/Rudy102.properties"
-                  todir="out/pl/sternik/kk/robocode" />
+        <copy file="src/pl/sternik/pb/robocode/ProBot.properties"
+                  todir="out/pl/sternik/pb/robocode" />
         <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-        <jar jarfile="${dist}/rudy102_${version}.jar" basedir="${build}"/>
+        <jar jarfile="${dist}/ProBot_${version}.jar" basedir="${build}"/>
     </target>
 
     <target name="clean"
