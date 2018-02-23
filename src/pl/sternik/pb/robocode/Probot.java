@@ -11,8 +11,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Probot extends AdvancedRobot {
 
 	private Opponent opponent;			// przeciwnik
-	private double fireStrength = 1;	// Si³a pocisku (obliczana na podstawie dystansu do przeciwnika)
-	private byte moveDir = 1;			// W którym kierunku siê poruszamy (-1, 1)
+	private double fireStrength = 1;	// Sila pocisku (obliczana na podstawie dystansu do przeciwnika)
+	private byte moveDir = 1;			// W ktÃ³rym kierunku sie poruszamy (-1, 1)
 	
 	@Override
 	public void run() {
@@ -28,8 +28,8 @@ public class Probot extends AdvancedRobot {
 		// w celu znalezienia przeciwnika:
 		turnRadarRightRadians(2* Math.PI);
 		
-		// W³¹czanie obrotów radaru i 
-		// dzia³a czo³gu w sposób niezale¿ny:
+		// Wlaczanie obrotÃ³w radaru i 
+		// dziala czolgu w sposÃ³b niezaleÂ¿ny:
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		
@@ -48,8 +48,8 @@ public class Probot extends AdvancedRobot {
 	public void onScannedRobot(ScannedRobotEvent event) {
 		/*
 		 * Gdy radar zeskanuje przeciwnika, musimy
-		 * zmieniæ wartoœæ, je¿eli znaleziony
-		 * przeciwnik jest najbli¿ej nas
+		 * zmienic wartosc, jezeli znaleziony
+		 * przeciwnik jest najblizej nas
 		 * */
 		
 		if(event.getDistance() < opponent.getDistance())
@@ -62,8 +62,8 @@ public class Probot extends AdvancedRobot {
 	public void onRobotDeath(RobotDeathEvent event) {
 		/*
 		 * Po zastrzeleniu przeciwnika, musimy
-		 * nadaæ mu max dystans, aby móc ponownie
-		 * wyszukaæ kolejnego przeciwnika
+		 * nadac mu max dystans, aby mÃ³c ponownie
+		 * wyszukac kolejnego przeciwnika
 		 * */		
 		opponent.setDistance(Double.MAX_VALUE);
 	}
@@ -77,8 +77,8 @@ public class Probot extends AdvancedRobot {
 			setAhead((3000 / moduloRange) * moveDir);
 		}
 		
-		// TODO: Obracanie siê do przeciwnika
-		// Sprawdzanie poprawnoœci dzia³¹nia:
+		// TODO: Obracanie sie do przeciwnika
+		// Sprawdzanie poprawnoÅ“ci dzialania: //
 		setTurnRightRadians((Math.PI / 2) + opponent.getBearing());
 	}
 	

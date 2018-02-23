@@ -3,15 +3,15 @@ package pl.sternik.pb.robocode;
 import robocode.ScannedRobotEvent;
 
 /*
- * Potrzebujemy klasy, która bêdzie
- * przechowywaæ najwa¿niejsze informacje
- * o przeciwniku, tak, abyœmy mogli je
- * wykorzystaæ w systemach poruszania,
+ * Potrzebujemy klasy, ktÃ³ra bedzie
+ * przechowywac najwazniejsze informacje
+ * o przeciwniku, tak, abysmy mogli je
+ * wykorzystac w systemach poruszania,
  * skanowania oraz strzelania.
  * */
 public final class Opponent {
 
-	private double distance;	// Odleg³oœæ od robota
+	private double distance;	// Odleglosc od robota
 	private double bearing;		// kierunek zwrotu
 	
 	public Opponent(double distance) {
