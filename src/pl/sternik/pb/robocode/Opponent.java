@@ -13,14 +13,29 @@ public final class Opponent {
 
 	private double distance;	// Odleglosc od robota
 	private double bearing;		// kierunek zwrotu
+	private long lastScanTime;	// Kiedy robiony byl skan
+	private Point position;		// pozycja przeciwnika
 	
+	public long getLastScanTime() {
+		return lastScanTime;
+	}
+
 	public Opponent(double distance) {
 		this.distance = distance;
 	}
 	
 	public void setupOpponent(ScannedRobotEvent opp) {
 		this.distance = opp.getDistance();
-		this.bearing = opp.getBearing();
+		this.bearing = opp.getBearingRadians();
+		this.lastScanTime = opp.getTime();
+	}
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
 	}
 
 	public double getBearing() {

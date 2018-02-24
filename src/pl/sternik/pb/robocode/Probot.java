@@ -54,7 +54,20 @@ public class Probot extends AdvancedRobot {
 		
 		if(event.getDistance() < opponent.getDistance())
 		{
+			/*
+			 * 
+			 * Zaglebiajac sie gdzies w tych materialach:
+			 * https://math.stackexchange.com/questions/2254901/compute-absolute-bearing-between-two-points-2d
+			 * 
+			 * */
+			double absoluteBearingRadians = (getHeadingRadians()+event.getBearingRadians())%(2*Math.PI);
+			double x = getX()+Math.sin(absoluteBearingRadians)*event.getDistance();
+			double y = getY()+Math.cos(absoluteBearingRadians)*event.getDistance();
+			
+			Point position = new Point(x, y);
+			
 			opponent.setupOpponent(event);
+			opponent.setPosition(position);
 		}
 	}
 	
@@ -84,6 +97,16 @@ public class Probot extends AdvancedRobot {
 	
 	private void scanManager() {
 		
+		double scanRadiansOffset;
+		
+		// Gdy dawno nie widzielismy przeciwnika
+		// musimy przeskanowac mape raz jeszcze.
+		if(getTime() - opponent.getLastScanTime() > 5) {
+			scanRadiansOffset = 360.0d;
+		}
+		else {
+		
+		}
 	}
 	
 	private void fireManager() {
