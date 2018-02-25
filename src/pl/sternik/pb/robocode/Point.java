@@ -19,7 +19,7 @@ public class Point {
 	
 	/*
 	 * Obrot bezwzgledny pomiedzy dwoma punktami (pozycjami)
-	 * èrÛd≥o: http://mark.random-article.com/weber/java/robocode/lesson4.html
+	 * Zrodlo: http://mark.random-article.com/weber/java/robocode/lesson4.html
 	 * */
 	public static double calculateAbsoluteBearing(Point A, Point B) {
 		
