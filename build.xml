@@ -1,5 +1,5 @@
 <project name="robot" default="dist" basedir=".">
-    <property name="version" value="0.0.3"/>
+    <property name="version" value="0.5.0"/>
     <description>
         build file for robocode
     </description>
@@ -37,10 +37,16 @@
             description="generate the distribution">
         <!-- Create the distribution directory -->
         <mkdir dir="${dist}"/>
-        <copy file="src/pl/sternik/pb/robocode/ProBot.properties"
+    	<filter token="SNAPSHOT" value="${version}"/>
+        <copy file="src/pl/sternik/pb/robocode/ProBot.properties" filtering="true"
                   todir="out/pl/sternik/pb/robocode" />
         <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-        <jar jarfile="${dist}/ProBot_${version}.jar" basedir="${build}"/>
+    	<jar jarfile="${dist}/ProBot_${version}.jar" basedir="${build}">
+    	     <manifest>
+    	          <attribute name="Built-By" value="${user.name}"/>
+    	          <attribute name="robots" value="pl.sternik.pb.robocode.Probot"/>
+    	     </manifest>
+    	</jar>    	
     </target>
 
     <target name="clean"

@@ -1,10 +1,6 @@
 package pl.sternik.pb.robocode;
 
-import robocode.AdvancedRobot;
-import robocode.RobotDeathEvent;
-import robocode.Rules;
-import robocode.ScannedRobotEvent;
-import robocode.util.Utils; 
+import robocode.*;
 import java.awt.Color;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -39,7 +35,8 @@ public class Probot extends AdvancedRobot {
 		// -> System strzelania
 		// -> System "uciekania" <- w przypadku trafienia
 		do {
-			moveManager();	
+			moveManager();
+			scanManager();
 			execute();
 		}while(true);
 	}
@@ -105,11 +102,26 @@ public class Probot extends AdvancedRobot {
 			scanRadiansOffset = 360.0d;
 		}
 		else {
+			Point myPosition = new Point(getX(), getY());
+			scanRadiansOffset = getRadarHeadingRadians() - Point.calculateAbsoluteBearing(myPosition, opponent.getPosition()); 
 		
+			if(scanRadiansOffset < 0) scanRadiansOffset -= Math.PI/8;
+			else scanRadiansOffset += Math.PI/8;
 		}
+		
+		setTurnRadarLeftRadians(calculateBearingNormalised(scanRadiansOffset));
 	}
 	
 	private void fireManager() {
 		
+	}
+	
+	// Obliczanie obrotu wzgledem cwiartki w ukladzie wspolrzednych
+	private double calculateBearingNormalised(double rotate) {
+		
+		if(rotate > Math.PI) rotate -= 2*Math.PI;
+		else if(rotate < -Math.PI) rotate += 2*Math.PI;
+		
+		return rotate;
 	}
 }
