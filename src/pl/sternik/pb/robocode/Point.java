@@ -39,15 +39,13 @@ public class Point {
 			absoluteBearing = Math.PI + Math.asin( -xo / distance );
 		}
 		else if ( xo < 0 && yo > 0 ) {
-			absoluteBearing = 2.0*Math.PI - Math.asin( -xo / distance );
+			absoluteBearing = 2.0d * Math.PI - Math.asin( -xo / distance );
 		}
 		
 		return absoluteBearing;
 	}
 	
 	private static double getDistance(double xo, double yo) {
-		xo *= xo;
-		yo *= yo;
-		return Math.sqrt(xo + yo);
+		return Math.sqrt(xo*xo + yo*yo);
 	}
 }
