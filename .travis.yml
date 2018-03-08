@@ -5,7 +5,7 @@ deploy:
   provider: releases
   api_key: "${GH_TOKEN}"
   file_glob: true
-  file: "release/pl.sternik.pb.robocode.ProBot_*.jar"
+  file: "release/ProBot_*.jar"
   skip_cleanup: true
   on:
     tags: true
